@@ -1,46 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LawBandit - Home</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
-    <h1>LawBandit</h1>
-    <nav>
-      <div class="menu-toggle" id="menu-toggle">☰</div>
-      <ul id="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="classes.html">Classes</a></li>
-        <li><a href="profile.html">Profile</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+  <div class="logo"><img src="lawbandit.svg" alt="LawBandit Logo" class="logo-img" /> LawBandit</div>
+      <nav>
+  <a href="index.html" class="active"><span>🏠</span> Home</a>
+  <a href="classes.html"><span>📚</span> Classes</a>
+  <a href="#" class="nav-secondary"><span>📅</span> Calendar</a>
+  <a href="profile.html"><span>👤</span> Profile</a>
+        <div class="nav-section-divider"></div>
+        <a href="#" class="nav-secondary"><span>🤝</span> Shared</a>
+        <a href="#" class="nav-secondary"><span>🎓</span> Tutorials</a>
+      </nav>
+      <div class="user-box">
+        <div class="avatar">SS</div>
+        <div>
+          <p class="username">Samantha Samek</p>
+          <p class="status">Not Subscribed</p>
+        </div>
+      </div>
+    </aside>
 
-  <section class="hero">
-    <h2>Secure Legal Workspace for Your Firm</h2>
-    <p>Manage documents, collaborate securely, and track deadlines — all in one place.</p>
-    <div>
-      <button class="primary">Create Account</button>
-      <button class="outline">Log In</button>
-    </div>
-  </section>
+    <!-- Main Content -->
+    <main class="content">
+      <section class="hero">
+        <h1>Welcome to LawBandit</h1>
+        <p class="subtitle">Your all-in-one platform for mastering law studies.</p>
+        <button class="btn cta-btn" id="get-started-btn">Get Started</button>
+      </section>
 
-  <footer>
-    <div>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-      <a href="#">Support</a>
-    </div>
-    <div>
-      <a href="#">Terms</a>
-      <a href="#">Privacy</a>
-    </div>
-  </footer>
+      <section class="stats-section">
+        <h2>Study Progress</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <h3>0h 0m</h3>
+            <p>Total Time</p>
+          </div>
+          <div class="stat-box">
+            <h3>0m</h3>
+            <p>Avg/Day</p>
+          </div>
+          <div class="stat-box">
+            <h3>0m</h3>
+            <p>Best Day</p>
+          </div>
+          <div class="stat-box">
+            <h3>0 days</h3>
+            <p>Current Streak</p>
+          </div>
+        </div>
+      </section>
 
-  <script src="script.js"></script>
+      <section class="notes-section">
+        <h2>Recent Notes</h2>
+        <div class="card-grid">
+          <div class="card">
+            <p class="tag">LAW</p>
+            <h3>Introduction to Law</h3>
+            <p class="meta">3 days ago</p>
+          </div>
+          <div class="card">
+            <p class="tag">CIVIL</p>
+            <h3>Civil Procedure</h3>
+            <p class="meta">1 week ago</p>
+          </div>
+          <div class="card">
+            <p class="tag">CRIM</p>
+            <h3>Criminal Law Basics</h3>
+            <p class="meta">2 weeks ago</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
 </html>

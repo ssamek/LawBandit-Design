@@ -1,51 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LawBandit - Classes</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
-    <h1>LawBandit</h1>
-    <nav>
-      <div class="menu-toggle" id="menu-toggle">☰</div>
-      <ul id="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="classes.html" class="active">Classes</a></li>
-        <li><a href="profile.html">Profile</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo"><img src="lawbandit.svg" alt="LawBandit Logo" class="logo-img" /> LawBandit</div>
+      <nav>
+        <a href="index.html"><span>🏠</span> Home</a>
+  <a href="classes.html" class="active"><span>📚</span> Classes</a>
+  <a href="#" class="nav-secondary"><span>📅</span> Calendar</a>
+        <a href="profile.html"><span>👤</span> Profile</a>
+        <div class="nav-section-divider"></div>
+        <a href="#" class="nav-secondary"><span>🤝</span> Shared</a>
+        <a href="#" class="nav-secondary"><span>🎓</span> Tutorials</a>
+      </nav>
+      <div class="user-box">
+        <div class="avatar">SS</div>
+        <div>
+          <p class="username">Samantha Samek</p>
+          <p class="status">Not Subscribed</p>
+        </div>
+      </div>
+    </aside>
 
-  <section>
-    <h2>Classes</h2>
-    <div class="card">
-      <h3>Contract Law 101</h3>
-      <p>Introductory course on contract law basics.</p>
-      <button class="outline">View Class</button>
-    </div>
-    <div class="card">
-      <h3>Intellectual Property</h3>
-      <p>Explore copyright, trademarks, and patents.</p>
-      <button class="outline">View Class</button>
-    </div>
-  </section>
+    <!-- Main Content -->
+    <main class="content">
+      <section class="classes-header">
+        <h1>Your Classes</h1>
+        <div style="display: flex; gap: 12px;">
+          <button class="btn cta-btn" id="study-room-btn">📖 Study Room</button>
+          <button class="btn cta-btn" id="new-class-btn">+ New Class</button>
+          <button class="btn cta-btn" id="new-note-btn">+ New Note</button>
+        </div>
+      </section>
+      <section class="folders-section">
+        <h2>Folders</h2>
+        <div class="folder-grid">
+          <div class="folder">
+            <span class="folder-icon">📁</span>
+            <span class="folder-name">Civil Law</span>
+            <div class="card-grid">
+              <div class="card">
+                <p class="tag">CIVIL</p>
+                <h3>Jurisdiction Basics</h3>
+                <p class="meta">2 days ago</p>
+              </div>
+            </div>
+          </div>
+          <div class="folder">
+            <span class="folder-icon">📁</span>
+            <span class="folder-name">Criminal Law</span>
+            <div class="card-grid">
+              <div class="card">
+                <p class="tag">CRIM</p>
+                <h3>Mens Rea Explained</h3>
+                <p class="meta">5 days ago</p>
+              </div>
+            </div>
+          </div>
+          <div class="folder">
+            <span class="folder-icon">📁</span>
+            <span class="folder-name">Contracts</span>
+            <div class="card-grid">
+              <div class="card">
+                <p class="tag">CONTRACT</p>
+                <h3>Offer & Acceptance</h3>
+                <p class="meta">1 week ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-  <footer>
-    <div>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-      <a href="#">Support</a>
+    <!-- Modal for New Note -->
+    <div id="class-modal" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <h2>New Class</h2>
+        <form id="class-form">
+          <label for="modal-class">Class Name</label>
+          <input type="text" id="modal-class" name="modal-class" required />
+          <div class="modal-actions">
+            <button type="submit" class="btn cta-btn">Create Class</button>
+            <button type="button" class="btn" id="close-class-modal-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div>
-      <a href="#">Terms</a>
-      <a href="#">Privacy</a>
+    <div id="note-modal" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <h2>New Note</h2>
+        <form id="note-form">
+          <label for="modal-folder">Folder Name</label>
+          <input type="text" id="modal-folder" name="modal-folder" required />
+          <label for="modal-note">Note Name</label>
+          <input type="text" id="modal-note" name="modal-note" required />
+          <div class="modal-actions">
+            <button type="submit" class="btn cta-btn">Create Note</button>
+            <button type="button" class="btn" id="close-modal-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </footer>
-
-  <script src="script.js"></script>
+  </div>
 </body>
 </html>
