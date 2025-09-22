@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LawBandit - Note</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo"><img src="lawbandit.svg" alt="LawBandit Logo" class="logo-img" /> LawBandit</div>
+      <nav>
+  <a href="index.html"><span>🏠</span> Home</a>
+  <a href="classes.html"><span>📚</span> Classes</a>
+  <a href="#" class="nav-secondary"><span>📅</span> Calendar</a>
+  <a href="profile.html"><span>👤</span> Profile</a>
+        <div class="nav-section-divider"></div>
+        <a href="#" class="nav-secondary"><span>🤝</span> Shared</a>
+        <a href="#" class="nav-secondary"><span>🎓</span> Tutorials</a>
+      </nav>
+      <div class="user-box">
+        <div class="avatar">SS</div>
+        <div>
+          <p class="username">Samantha Samek</p>
+          <p class="status">Not Subscribed</p>
+        </div>
+      </div>
+    </aside>
+    <main class="content">
+      <section class="note-header" style="display:flex;align-items:center;justify-content:space-between;gap:20px;">
+        <div>
+          <h1 id="note-title">Note Title</h1>
+          <p id="note-folder" class="tag">Folder</p>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <button class="btn" id="back-btn">Back</button>
+          <button class="btn" id="upload-btn">Upload File</button>
+          <input type="file" id="file-input" style="display:none;" multiple />
+          <button class="btn cta-btn" id="save-btn">Save</button>
+        </div>
+      </section>
+      <section>
+        <div id="editor-toolbar" style="margin-bottom:10px;display:flex;gap:8px;flex-wrap:wrap;">
+          <button type="button" class="btn" data-cmd="bold"><b>B</b></button>
+          <button type="button" class="btn" data-cmd="italic"><i>I</i></button>
+          <button type="button" class="btn" data-cmd="underline"><u>U</u></button>
+          <button type="button" class="btn" data-cmd="insertUnorderedList">• List</button>
+          <button type="button" class="btn" data-cmd="insertOrderedList">1. List</button>
+          <button type="button" class="btn" data-cmd="formatBlock" data-value="h2">H2</button>
+          <button type="button" class="btn" data-cmd="formatBlock" data-value="blockquote">❝</button>
+        </div>
+        <div id="note-editor" contenteditable="true" style="width:100%;min-height:50vh;font-size:1.1em;padding:18px;border-radius:10px;background:#181c27;color:#fff;border:none;outline:none;resize:vertical;"></div>
+      </section>
+    </main>
+  </div>
+  <script>
+    // Upload button logic
+    document.getElementById('upload-btn').addEventListener('click', function() {
+      document.getElementById('file-input').click();
+    });
+    document.getElementById('file-input').addEventListener('change', function(e) {
+      const files = Array.from(e.target.files);
+      if (files.length) {
+        alert('Selected files: ' + files.map(f => f.name).join(', '));
+        // You can add logic here to display or process the files as needed
+      }
+    });
+    // Populate note title and folder from query params
+    const params = new URLSearchParams(window.location.search);
+    const note = params.get('note');
+    const folder = params.get('folder');
+    if (note) document.getElementById('note-title').textContent = note;
+    if (folder) document.getElementById('note-folder').textContent = folder;
+
+    // Text editing toolbar logic
+    document.getElementById('editor-toolbar').addEventListener('click', function(e) {
+      if (e.target.closest('button')) {
+        const btn = e.target.closest('button');
+        const cmd = btn.getAttribute('data-cmd');
+        const value = btn.getAttribute('data-value') || null;
+        document.execCommand(cmd, false, value);
+      }
+    });
+
+    // Save button logic (localStorage for demo)
+    document.getElementById('save-btn').addEventListener('click', function() {
+      const content = document.getElementById('note-editor').innerHTML;
+      const key = `lawbandit-note-${folder || ''}-${note || ''}`;
+      localStorage.setItem(key, content);
+      alert('Note saved!');
+    });
+
+    // Load saved note if exists
+    window.addEventListener('DOMContentLoaded', function() {
+      const key = `lawbandit-note-${folder || ''}-${note || ''}`;
+      const saved = localStorage.getItem(key);
+      if (saved) document.getElementById('note-editor').innerHTML = saved;
+    });
+
+    // Back button logic
+    document.getElementById('back-btn').addEventListener('click', function() {
+      window.history.length > 1 ? window.history.back() : window.location.href = 'classes.html';
+    });
+  </script>
+</body>
+</html>
